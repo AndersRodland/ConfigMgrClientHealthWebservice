@@ -1,0 +1,260 @@
+﻿@page
+@model ConfigMgrClientHealthWebservice.Pages.ListModel
+
+@{
+    ViewData["Title"] = "ConfigMgr Client Health Webservice - All devices in database";
+}
+
+<h2>All devices in database</h2>
+
+&nbsp;
+&nbsp;
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Hostname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].OperatingSystem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Architecture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Build)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].InstallDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Osupdates)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].LastLoggedOnUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].ClientVersion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Psversion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Psbuild)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Sitecode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Domain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].MaxLogSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].MaxLogHistory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].CacheSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].ClientCertificate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].ProvisioningMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Dns)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Drivers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Updates)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].PendingReboot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].LastBootTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].OsdiskFreeSpace)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Services)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].AdminShare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].StateMessages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Wuahandler)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Wmi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].ClientInstalled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Hwinventory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Swmetering)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].Bits)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].PatchLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].ClientInstalledReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clients[0].RefreshComplianceState)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Clients)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OperatingSystem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Architecture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Build)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstallDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Osupdates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastLoggedOnUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientVersion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Psversion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Psbuild)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sitecode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Domain)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxLogSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxLogHistory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CacheSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientCertificate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProvisioningMode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dns)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drivers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PendingReboot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastBootTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OsdiskFreeSpace)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Services)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminShare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateMessages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wuahandler)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wmi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientInstalled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hwinventory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Swmetering)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatchLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientInstalledReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RefreshComplianceState)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
