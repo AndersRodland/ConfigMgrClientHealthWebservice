@@ -159,6 +159,10 @@ namespace ConfigMgrClientHealthWebservice.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.RefreshComplianceState).HasColumnType("datetime");
+
+                entity.Property(e => e.CMClientGUID)
+                    .HasMaxLength(41)
+                    .IsUnicode(false);
             });
         }
     }

@@ -44,5 +44,6 @@ namespace ConfigMgrClientHealthWebservice.Models
         public int? PatchLevel { get; set; }
         public string ClientInstalledReason { get; set; }
         public DateTime? RefreshComplianceState { get; set; }
+        public string CMClientGUID { get; set; }
     }
 }
