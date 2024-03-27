@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bx6HTtNoNpeGmmcTFNIQnQ8XP0Z8GXsf/C/8Iuo9T34=",
+  "Source": "ClientHealthWebServiceV2",
+  "BasePath": "_content/ClientHealthWebServiceV2",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
