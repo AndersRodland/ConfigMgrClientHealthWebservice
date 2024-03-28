@@ -36,8 +36,12 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
             var clients = _context.Clients;
             if (name != null)
             {
-                var found = clients.Where(c => c.ClientHealthId.ToLower() == name.ToLower());
-                return found.ToList();
+                var found = clients.Find(name);
+                if (found != null)
+                {
+                    return new List<Client> { found };
+                }
+                return new List<Client>();
             }
             else
             {
@@ -48,7 +52,21 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
 
         public ActionResult<Client> SetClient(Client client)
         {
-            var thisClient = _context.Clients.Find(client.ClientHealthId);
+            Client? thisClient = null;
+            if (client.ClientHealthId == (new Guid().ToString()))
+            {
+                client.ClientHealthId = Guid.NewGuid().ToString();
+                _logger.LogDebug("Client Id not passed, adding new client with id: {exMessage}", client.ClientHealthId);
+            }
+            else
+            {
+                _logger.LogDebug("Searching for client with id: {exMessage}", client.ClientHealthId);
+                thisClient = _context.Clients.Find(client.ClientHealthId);
+                if (thisClient == null)
+                {
+                    _logger.LogWarning("Client Sent a client Id but not found in the database.  This may be a problem if you see it a lot.  Will create a new record for... ClientId: {ClientHealthId}  Hostname: {Hostname}", client.ClientHealthId, client.Hostname);
+                }
+            }
             if (thisClient == null)
             {
                 try
@@ -59,7 +77,8 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to add to database. Message: {ex}");
+                    _logger.LogError("Failed to add to database. Message: {exMessage}", ex.Message);
+                    throw new Exception($"Failed to add to database. Message: {ex.Message}");
                 }
             }
             else
@@ -72,7 +91,8 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to update database. Message: {ex}");
+                    _logger.LogError("Failed to update database. Message: {exMessage}", ex.Message);
+                    throw new Exception($"Failed to update database. Message: {ex.Message}");
                 }
             }
 
@@ -88,15 +108,18 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
                     var deSerialConfig = JsonConvert.DeserializeObject<ClientConfigDto>(config.Configuration);
                     if (deSerialConfig == null)
                     {
-                        throw new Exception("Failed to convert configuration datal.");
+                        _logger.LogError("Failed to convert configuration data. Deserialized config is null.");
+                        throw new Exception("Failed to convert configuration data.");
                     }
                     return deSerialConfig;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    throw new Exception("Failed to convert configuration datal.");
+                    _logger.LogError("Failed to convert configuration data. Message: {exMessage}", ex.Message);
+                    throw new Exception("Failed to convert configuration data.");
                 }
             }
+            _logger.LogError("Default configuration not found.");
             throw new Exception("Default configuration not found.");
         }
         public ClientConfigDto SetClientConfiguration(ClientConfigDto config)
@@ -119,7 +142,8 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to add configuration into database. Message: {ex}");
+                    _logger.LogError("Failed to add configuration into database. Message: {exMessage}", ex.Message);
+                    throw new Exception($"Failed to add configuration into database. Message: {ex.Message}");
                 }
             }
             else
@@ -132,7 +156,8 @@ namespace ClientHealthWebServiceV2.BL.ClientActions
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Failed to update configuration in database. Message: {ex}");
+                    _logger.LogError("Failed to update configuration in database. Message: {exMessage}", ex.Message);
+                    throw new Exception($"Failed to update configuration in database. Message: {ex.Message}");
                 }
             }
         }

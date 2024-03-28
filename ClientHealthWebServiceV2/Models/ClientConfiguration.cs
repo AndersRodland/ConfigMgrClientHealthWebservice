@@ -7,7 +7,7 @@ namespace ClientHealthWebServiceV2.Models
     public class ClientConfiguration
     {
         [Key]
-        public string Id { get; set; }
-        public string Configuration { get; set; }
+        public string Id { get; set; } = string.Empty;
+        public string Configuration { get; set; } = "{}";
     }
 }

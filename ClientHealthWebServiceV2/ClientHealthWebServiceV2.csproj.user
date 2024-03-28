@@ -11,6 +11,6 @@
     <WebStackScaffolding_DbContextTypeFullName>ClientHealthWebServiceV2.Models.ClientDBContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\pwett\source\repos\ClientHealthWebServiceV2\ClientHealthWebServiceV2\Properties\PublishProfiles\IISProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\paulw\source\Github\ConfigMgrClientHealthWebserviceV2\ClientHealthWebServiceV2\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

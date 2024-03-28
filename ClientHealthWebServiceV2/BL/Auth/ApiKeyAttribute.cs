@@ -27,21 +27,32 @@ namespace ClientHealthWebServiceV2.BL.Auth
                     StatusCode = 401,
                     Content = "Authorization not provided."
                 };
-                _logger.LogWarning($"Authorization not provided for API call. {context.HttpContext.Request.Path}");
+                _logger.LogWarning("Authorization not provided for API call. {path}", context.HttpContext.Request.Path);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(extractedApiKey))
+            {
+                context.Result = new ContentResult()
+                {
+                    StatusCode = 401,
+                    Content = "Authorization not provided."
+                };
+                _logger.LogWarning("Authorization not provided for API call. The key is empty.  {path}", context.HttpContext.Request.Path);
                 return;
             }
 
             var appSettings = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
-            var configuredApiKeys = appSettings.GetSection(_configKey).Get<string[]>().ToList();
+            List<string> configuredApiKeys = appSettings.GetSection(_configKey).Get<string[]>().ToList();
 
-            if (configuredApiKeys.Count == 0 || !configuredApiKeys.Contains(extractedApiKey))
+            if (!(configuredApiKeys.Count != 0 && configuredApiKeys.Contains(extractedApiKey)))
             {
                 context.Result = new ContentResult()
                 {
                     StatusCode = 401,
                     Content = "Unauthorized client"
                 };
-                _logger.LogWarning($"Incorrect API Key Provided for API call. {context.HttpContext.Request.Path}");
+                _logger.LogWarning("Incorrect API Key Provided for API call. {path}", context.HttpContext.Request.Path);
                 return;
             }
 
